@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Projeto de Exercícios em JavaScript</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .container {
+      margin-top: 50px;
+    }
+    .exercise-section {
+      display: none;
+    }
+    .result {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="container">
+    <h1 class="text-center mb-4">Projeto de Exercícios em JavaScript</h1>
+    
+    <!-- Menu Principal -->
+    <div id="menu">
+      <div class="mb-3">
+        <label for="exerciseSelect" class="form-label">Selecione um Exercício:</label>
+        <select class="form-select" id="exerciseSelect">
+          <option value="" selected>-- Escolha uma opção --</option>
+          <option value="1">1. Verificar se um número é par ou ímpar</option>
+          <option value="2">2. Classificar idade em categorias</option>
+          <option value="3">3. Classificar nota</option>
+          <option value="4">4. Menu interativo com switch-case</option>
+          <option value="5">5. Calcular IMC e determinar categoria de peso</option>
+          <option value="6">6. Verificar tipo de triângulo</option>
+          <option value="7">7. Calcular o valor total da compra de maçãs</option>
+          <option value="8">8. Escrever dois valores em ordem crescente</option>
+          <option value="9">9. Contagem regressiva de 10 até 1</option>
+          <option value="10">10. Escrever um número inteiro na tela 10 vezes</option>
+          <option value="11">11. Somar 5 números fornecidos pelo usuário</option>
+          <option value="12">12. Exibir a tabuada de um número</option>
+          <option value="13">13. Calcular a média de números decimais até 0</option>
+          <option value="14">14. Calcular o fatorial de um número</option>
+          <option value="15">15. Imprimir os primeiros 10 números da sequência de Fibonacci</option>
+        </select>
+      </div>
+      <button class="btn btn-primary" id="goButton">Executar</button>
+    </div>
+    
+    <!-- Seções de Exercícios -->
+    
+    <!-- Exercício 1 -->
+    <div id="exercise1" class="exercise-section">
+      <h3>1. Verificar se um número é par ou ímpar</h3>
+      <div class="mb-3">
+        <label for="numeroParImpar" class="form-label">Digite um número inteiro:</label>
+        <input type="number" class="form-control" id="numeroParImpar">
+      </div>
+      <button class="btn btn-success" onclick="verificarParImpar()">GO</button>
+      <button class="btn btn-secondary" onclick="voltar()">Voltar ao Menu</button>
+      <div class="result" id="resultado1"></div>
+    </div>
+    
+    <!-- Exercício 2 -->
+    <div id="exercise2" class="exercise-section">
+      <h3>2. Classificar idade em categorias</h3>
+      <div class="mb-3">
+        <label for="idadeCategoria" class="form-label">Digite a sua idade:</label>
+        <input type="number" class="form-control" id="idadeCategoria">
+      </div>
+      <button class="btn btn-success" onclick="classificarIdade()">GO</button>
+      <button class="btn btn-secondary" onclick="voltar()">Voltar ao Menu</button>
+      <div class="result" id="resultado2"></div>
+    </div>
+    
+    <!-- Exercício 3 -->
+    <div id="exercise3" class="exercise-section">
+      <h3>3. Classificar nota</h3>
+      <div class="mb-3">
+        <label for="notaClassificacao" class="form-label">Digite a nota (0 a 10):</label>
+        <input type="number" step="0.1" class="form-control" id="notaClassificacao">
+      </div>
+      <button class="btn btn-success" onclick="classificarNota()">GO</button>
+      <button class="btn btn-secondary" onclick="voltar()">Voltar ao Menu</button>
+      <div class="result" id="resultado3"></div>
+    </div>
+    
+    <!-- Exercício 4 -->
+    <div id="exercise4" class="exercise-section">
+      <h3>4. Menu interativo com switch-case</h3>
+      <div class="mb-3">
+        <label for="opcaoMenu" class="form-label">Escolha uma opção:</label>
+        <select class="form-select" id="opcaoMenu">
+          <option value="" selected>-- Escolha uma opção --</option>
+          <option value="1">1 - Olá</option>
+          <option value="2">2 - Como vai?</option>
+          <option value="3">3 - Tchau</option>
+        </select>
+      </div>
+      <button class="btn btn-success" onclick="menuInterativo()">GO</button>
+      <button class="btn btn-secondary" onclick="voltar()">Voltar ao Menu</button>
+      <div class="result" id="resultado4"></div>
+    </div>
+    
+    <!-- Exercício 5 -->
+    <div id="exercise5" class="exercise-section">
+      <h3>5. Calcular IMC e determinar categoria de peso</h3>
+      <div class="mb-3">
+        <label for="pesoIMC" class="form-label">Digite o seu peso em kg:</label>
+        <input type="number" step="0.1" class="form-control" id="pesoIMC">
+      </div>
+      <div class="mb-3">
+        <label for="alturaIMC" class="form-label">Digite a sua altura em metros:</label>
+        <input type="number" step="0.01" class="form-control" id="alturaIMC">
+      </div>
+      <button class="btn btn-success" onclick="calcularIMC()">GO</button>
+      <button class="btn btn-secondary" onclick="voltar()">Voltar ao Menu</button>
+      <div class="result" id="resultado5"></div>
+    </div>
+    
+    <!-- Exercício 6 -->
+    <div id="exercise6" class="exercise-section">
+      <h3>6. Verificar tipo de triângulo</h3>
+      <div class="mb-3">
+        <label for="ladoA" class="form-label">Digite o lado A:</label>
+        <input type="number" step="0.1" class="form-control" id="ladoA">
+      </div>
+      <div class="mb-3">
+        <label for="ladoB" class="form-label">Digite o lado B:</label>
+        <input type="number" step="0.1" class="form-control" id="ladoB">
+      </div>
+      <div class="mb-3">
+        <label for="ladoC" class="form-label">Digite o lado C:</label>
+        <input type="number" step="0.1" class="form-control" id="ladoC">
+      </div>
+      <button class="btn btn-success" onclick="verificarTriangulo()">GO</button>
+      <button class="btn btn-secondary" onclick="voltar()">Voltar ao Menu</button>
+      <div class="result" id="resultado6"></div>
+    </div>
+    
+    <!-- Exercício 7 -->
+    <div id="exercise7" class="exercise-section">
+      <h3>7. Calcular o valor total da compra de maçãs</h3>
+      <div class="mb-3">
+        <label for="quantidadeMacas" class="form-label">Digite o número de maçãs compradas:</label>
+        <input type="number" class="form-control" id="quantidadeMacas">
+      </div>
+      <button class="btn btn-success" onclick="calcularCompraMacas()">GO</button>
+      <button class="btn btn-secondary" onclick="voltar()">Voltar ao Menu</button>
+      <div class="result" id="resultado7"></div>
+    </div>
+    
+    <!-- Exercício 8 -->
+    <div id="exercise8" class="exercise-section">
+      <h3>8. Escrever dois valores em ordem crescente</h3>
+      <div class="mb-3">
+        <label for="valor1Crescente" class="form-label">Digite o primeiro valor:</label>
+        <input type="number" class="form-control" id="valor1Crescente">
+      </div>
+      <div class="mb-3">
+        <label for="valor2Crescente" class="form-label">Digite o segundo valor diferente do primeiro:</label>
+        <input type="number" class="form-control" id="valor2Crescente">
+      </div>
+      <button class="btn btn-success" onclick="ordenarValores()">GO</button>
+      <button class="btn btn-secondary" onclick="voltar()">Voltar ao Menu</button>
+      <div class="result" id="resultado8"></div>
+    </div>
+    
+    <!-- Exercício 9 -->
+    <div id="exercise9" class="exercise-section">
+      <h3>9. Contagem regressiva de 10 até 1</h3>
+      <button class="btn btn-success" onclick="contagemRegressiva()">GO</button>
+      <button class="btn btn-secondary" onclick="voltar()">Voltar ao Menu</button>
+      <div class="result" id="resultado9"></div>
+    </div>
+    
+    <!-- Exercício 10 -->
+    <div id="exercise10" class="exercise-section">
+      <h3>10. Escrever um número inteiro na tela 10 vezes</h3>
+      <div class="mb-3">
+        <label for="numeroRepetir" class="form-label">Digite um número inteiro:</label>
+        <input type="number" class="form-control" id="numeroRepetir">
+      </div>
+      <button class="btn btn-success" onclick="repetirNumero()">GO</button>
+      <button class="btn btn-secondary" onclick="voltar()">Voltar ao Menu</button>
+      <div class="result" id="resultado10"></div>
+    </div>
+    
+    <!-- Exercício 11 -->
+    <div id="exercise11" class="exercise-section">
+      <h3>11. Somar 5 números fornecidos pelo usuário</h3>
+      <button class="btn btn-success" onclick="somarNumeros()">GO</button>
+      <button class="btn btn-secondary" onclick="voltar()">Voltar ao Menu</button>
+      <div class="result" id="resultado11"></div>
+    </div>
+    
+    <!-- Exercício 12 -->
+    <div id="exercise12" class="exercise-section">
+      <h3>12. Exibir a tabuada de um número</h3>
+      <div class="mb-3">
+        <label for="numeroTabuada" class="form-label">Digite um número para ver sua tabuada:</label>
+        <input type="number" class="form-control" id="numeroTabuada">
+      </div>
+      <button class="btn btn-success" onclick="exibirTabuada()">GO</button>
+      <button class="btn btn-secondary" onclick="voltar()">Voltar ao Menu</button>
+      <div class="result" id="resultado12"></div>
+    </div>
+    
+    <!-- Exercício 13 -->
+    <div id="exercise13" class="exercise-section">
+      <h3>13. Calcular a média de números decimais até 0</h3>
+      <button class="btn btn-success" onclick="calcularMedia()">GO</button>
+      <button class="btn btn-secondary" onclick="voltar()">Voltar ao Menu</button>
+      <div class="result" id="resultado13"></div>
+    </div>
+    
+    <!-- Exercício 14 -->
+    <div id="exercise14" class="exercise-section">
+      <h3>14. Calcular o fatorial de um número</h3>
+      <div class="mb-3">
+        <label for="numeroFatorial" class="form-label">Digite um número inteiro não negativo:</label>
+        <input type="number" class="form-control" id="numeroFatorial">
+      </div>
+      <button class="btn btn-success" onclick="calcularFatorial()">GO</button>
+      <button class="btn btn-secondary" onclick="voltar()">Voltar ao Menu</button>
+      <div class="result" id="resultado14"></div>
+    </div>
+    
+    <!-- Exercício 15 -->
+    <div id="exercise15" class="exercise-section">
+      <h3>15. Imprimir os primeiros 10 números da sequência de Fibonacci</h3>
+      <button class="btn btn-success" onclick="sequenciaFibonacci()">GO</button>
+      <button class="btn btn-secondary" onclick="voltar()">Voltar ao Menu</button>
+      <div class="result" id="resultado15"></div>
+    </div>
+    
+  </div>
+  
+  <!-- Bootstrap JS e Dependências -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- JavaScript para Funcionalidades -->
+  <script>
+    // Função para mostrar a seção selecionada
+    document.getElementById('goButton').addEventListener('click', function() {
+      const selected = document.getElementById('exerciseSelect').value;
+      if (selected === "") {
+        alert("Por favor, selecione um exercício.");
+        return;
+      }
+      document.getElementById('menu').style.display = 'none';
+      document.getElementById('exercise' + selected).style.display = 'block';
+    });
+    
+    // Função para voltar ao menu principal
+    function voltar() {
+      // Limpar resultados
+      const resultados = document.querySelectorAll('.result');
+      resultados.forEach(function(result) {
+        result.innerHTML = "";
+      });
+      // Ocultar todas as seções de exercícios
+      const sections = document.querySelectorAll('.exercise-section');
+      sections.forEach(function(section) {
+        section.style.display = 'none';
+      });
+      // Mostrar o menu principal
+      document.getElementById('menu').style.display = 'block';
+    }
+    
+    // Exercício 1: Verificar se um número é par ou ímpar
+    function verificarParImpar() {
+      const numero = parseInt(document.getElementById('numeroParImpar').value);
+      const resultado = document.getElementById('resultado1');
+      
+      if (isNaN(numero)) {
+        resultado.innerHTML = "<div class='alert alert-danger'>Por favor, insira um número válido.</div>";
+        return;
+      }
+      
+      if (numero % 2 === 0) {
+        resultado.innerHTML = "<div class='alert alert-success'>O número é par.</div>";
+      } else {
+        resultado.innerHTML = "<div class='alert alert-warning'>O número é ímpar.</div>";
+      }
+    }
+    
+    // Exercício 2: Classificar idade em categorias
+    function classificarIdade() {
+      const idade = parseInt(document.getElementById('idadeCategoria').value);
+      const resultado = document.getElementById('resultado2');
+      
+      if (isNaN(idade) || idade < 0) {
+        resultado.innerHTML = "<div class='alert alert-danger'>Idade inválida.</div>";
+        return;
+      }
+      
+      if (idade >= 0 && idade <= 12) {
+        resultado.innerHTML = "<div class='alert alert-info'>Você é uma criança.</div>";
+      } else if (idade >= 13 && idade <= 17) {
+        resultado.innerHTML = "<div class='alert alert-info'>Você é um adolescente.</div>";
+      } else if (idade >= 18 && idade <= 64) {
+        resultado.innerHTML = "<div class='alert alert-info'>Você é um adulto.</div>";
+      } else if (idade >= 65) {
+        resultado.innerHTML = "<div class='alert alert-info'>Você é um idoso.</div>";
+      } else {
+        resultado.innerHTML = "<div class='alert alert-danger'>Idade inválida.</div>";
+      }
+    }
+    
+    // Exercício 3: Classificar nota
+    function classificarNota() {
+      const nota = parseFloat(document.getElementById('notaClassificacao').value);
+      const resultado = document.getElementById('resultado3');
+      
+      if (isNaN(nota) || nota < 0 || nota > 10) {
+        resultado.innerHTML = "<div class='alert alert-danger'>Nota inválida.</div>";
+        return;
+      }
+      
+      if (nota >= 7 && nota <= 10) {
+        resultado.innerHTML = "<div class='alert alert-success'>Aprovado</div>";
+      } else if (nota >= 5 && nota < 7) {
+        resultado.innerHTML = "<div class='alert alert-warning'>Recuperação</div>";
+      } else if (nota >= 0 && nota < 5) {
+        resultado.innerHTML = "<div class='alert alert-danger'>Reprovado</div>";
+      } else {
+        resultado.innerHTML = "<div class='alert alert-danger'>Nota inválida.</div>";
+      }
+    }
+    
+    // Exercício 4: Menu interativo com switch-case
+    function menuInterativo() {
+      const opcao = parseInt(document.getElementById('opcaoMenu').value);
+      const resultado = document.getElementById('resultado4');
+      
+      switch (opcao) {
+        case 1:
+          resultado.innerHTML = "<div class='alert alert-success'>Você selecionou 'Olá'</div>";
+          break;
+        case 2:
+          resultado.innerHTML = "<div class='alert alert-info'>Você selecionou 'Como vai?'</div>";
+          break;
+        case 3:
+          resultado.innerHTML = "<div class='alert alert-secondary'>Você selecionou 'Tchau'</div>";
+          break;
+        default:
+          resultado.innerHTML = "<div class='alert alert-danger'>Opção inválida.</div>";
+      }
+    }
+    
+    // Exercício 5: Calcular IMC e determinar categoria de peso
+    function calcularIMC() {
+      const peso = parseFloat(document.getElementById('pesoIMC').value);
+      const altura = parseFloat(document.getElementById('alturaIMC').value);
+      const resultado = document.getElementById('resultado5');
+      
+      if (isNaN(peso) || isNaN(altura) || peso <= 0 || altura <= 0) {
+        resultado.innerHTML = "<div class='alert alert-danger'>Peso ou altura inválidos.</div>";
+        return;
+      }
+      
+      const imc = peso / (altura * altura);
+      let categoria = "";
+      
+      if (imc < 18.5) {
+        categoria = "Baixo peso";
+      } else if (imc >= 18.5 && imc < 25) {
+        categoria = "Peso normal";
+      } else if (imc >= 25 && imc < 30) {
+        categoria = "Sobrepeso";
+      } else {
+        categoria = "Obesidade";
+      }
+      
+      resultado.innerHTML = `<div class='alert alert-info'>Seu IMC é: ${imc.toFixed(2)} - ${categoria}</div>`;
+    }
+    
+    // Exercício 6: Verificar tipo de triângulo
+    function verificarTriangulo() {
+      const A = parseFloat(document.getElementById('ladoA').value);
+      const B = parseFloat(document.getElementById('ladoB').value);
+      const C = parseFloat(document.getElementById('ladoC').value);
+      const resultado = document.getElementById('resultado6');
+      
+      if (isNaN(A) || isNaN(B) || isNaN(C) || A <= 0 || B <= 0 || C <= 0) {
+        resultado.innerHTML = "<div class='alert alert-danger'>Lados inválidos.</div>";
+        return;
+      }
+      
+      if (A < B + C && B < A + C && C < A + B) {
+        if (A === B && B === C) {
+          resultado.innerHTML = "<div class='alert alert-success'>Triângulo Equilátero</div>";
+        } else if (A === B || A === C || B === C) {
+          resultado.innerHTML = "<div class='alert alert-warning'>Triângulo Isósceles</div>";
+        } else {
+          resultado.innerHTML = "<div class='alert alert-info'>Triângulo Escaleno</div>";
+        }
+      } else {
+        resultado.innerHTML = "<div class='alert alert-danger'>Os lados fornecidos não formam um triângulo.</div>";
+      }
+    }
+    
+    // Exercício 7: Calcular o valor total da compra de maçãs
+    function calcularCompraMacas() {
+      const quantidade = parseInt(document.getElementById('quantidadeMacas').value);
+      const resultado = document.getElementById('resultado7');
+      
+      if (isNaN(quantidade) || quantidade < 0) {
+        resultado.innerHTML = "<div class='alert alert-danger'>Quantidade inválida.</div>";
+        return;
+      }
+      
+      let preco;
+      if (quantidade < 12) {
+        preco = 0.30;
+      } else {
+        preco = 0.25;
+      }
+      
+      const total = quantidade * preco;
+      resultado.innerHTML = `<div class='alert alert-info'>O valor total da compra é R$ ${total.toFixed(2)}</div>`;
+    }
+    
+    // Exercício 8: Escrever dois valores em ordem crescente
+    function ordenarValores() {
+      const valor1 = parseFloat(document.getElementById('valor1Crescente').value);
+      const valor2 = parseFloat(document.getElementById('valor2Crescente').value);
+      const resultado = document.getElementById('resultado8');
+      
+      if (isNaN(valor1) || isNaN(valor2)) {
+        resultado.innerHTML = "<div class='alert alert-danger'>Por favor, insira valores válidos.</div>";
+        return;
+      }
+      
+      if (valor1 === valor2) {
+        resultado.innerHTML = "<div class='alert alert-danger'>Os valores são iguais. Por favor, insira valores diferentes.</div>";
+        return;
+      }
+      
+      if (valor1 < valor2) {
+        resultado.innerHTML = `<div class='alert alert-info'>Ordem crescente: ${valor1}, ${valor2}</div>`;
+      } else {
+        resultado.innerHTML = `<div class='alert alert-info'>Ordem crescente: ${valor2}, ${valor1}</div>`;
+      }
+    }
+    
+    // Exercício 9: Contagem regressiva de 10 até 1
+    function contagemRegressiva() {
+      const resultado = document.getElementById('resultado9');
+      resultado.innerHTML = "";
+      
+      for (let i = 10; i >= 1; i--) {
+        resultado.innerHTML += `<span class="badge bg-primary me-1">${i}</span>`;
+      }
+    }
+    
+    // Exercício 10: Escrever um número inteiro na tela 10 vezes
+    function repetirNumero() {
+      const numero = parseInt(document.getElementById('numeroRepetir').value);
+      const resultado = document.getElementById('resultado10');
+      
+      if (isNaN(numero)) {
+        resultado.innerHTML = "<div class='alert alert-danger'>Por favor, insira um número válido.</div>";
+        return;
+      }
+      
+      let output = "";
+      for (let i = 1; i <= 10; i++) {
+        output += `<span class="badge bg-success me-1">${numero}</span>`;
+      }
+      resultado.innerHTML = `<div>${output}</div>`;
+    }
+    
+    // Exercício 11: Somar 5 números fornecidos pelo usuário
+    function somarNumeros() {
+      let soma = 0;
+      let contador = 0;
+      const resultado = document.getElementById('resultado11');
+      
+      for (let i = 1; i <= 5; i++) {
+        let numero = parseFloat(prompt(`Digite o número ${i}:`));
+        if (isNaN(numero)) {
+          alert("Número inválido. Por favor, insira um valor numérico.");
+          i--; // Repetir a iteração
+          continue;
+        }
+        soma += numero;
+        contador++;
+      }
+      
+      resultado.innerHTML = `<div class='alert alert-info'>A soma total é: ${soma}</div>`;
+    }
+    
+    // Exercício 12: Exibir a tabuada de um número
+    function exibirTabuada() {
+      const numero = parseInt(document.getElementById('numeroTabuada').value);
+      const resultado = document.getElementById('resultado12');
+      
+      if (isNaN(numero)) {
+        resultado.innerHTML = "<div class='alert alert-danger'>Por favor, insira um número válido.</div>";
+        return;
+      }
+      
+      let tabuada = `<table class="table table-bordered"><thead><tr><th>Multiplicação</th><th>Resultado</th></tr></thead><tbody>`;
+      for (let i = 1; i <= 10; i++) {
+        tabuada += `<tr><td>${numero} x ${i}</td><td>${numero * i}</td></tr>`;
+      }
+      tabuada += `</tbody></table>`;
+      
+      resultado.innerHTML = tabuada;
+    }
+    
+    // Exercício 13: Calcular a média de números decimais até 0
+    function calcularMedia() {
+      let soma = 0;
+      let contador = 0;
+      let numero;
+      const resultado = document.getElementById('resultado13');
+      resultado.innerHTML = "";
+      
+      while (true) {
+        numero = parseFloat(prompt("Digite um número decimal (ou 0 para finalizar):"));
+        if (isNaN(numero)) {
+          alert("Número inválido. Por favor, insira um valor numérico.");
+          continue;
+        }
+        if (numero === 0) {
+          break;
+        }
+        soma += numero;
+        contador++;
+      }
+      
+      if (contador > 0) {
+        let media = soma / contador;
+        resultado.innerHTML = `<div class='alert alert-info'>A média aritmética é: ${media.toFixed(2)}</div>`;
+      } else {
+        resultado.innerHTML = "<div class='alert alert-warning'>Nenhum número foi digitado.</div>";
+      }
+    }
+    
+    // Exercício 14: Calcular o fatorial de um número
+    function calcularFatorial() {
+      const numero = parseInt(document.getElementById('numeroFatorial').value);
+      const resultado = document.getElementById('resultado14');
+      
+      if (isNaN(numero) || numero < 0) {
+        resultado.innerHTML = "<div class='alert alert-danger'>Número inválido. Por favor, digite um número não negativo.</div>";
+        return;
+      }
+      
+      let fatorial = 1;
+      for (let i = 1; i <= numero; i++) {
+        fatorial *= i;
+      }
+      
+      resultado.innerHTML = `<div class='alert alert-info'>O fatorial de ${numero} é: ${fatorial}</div>`;
+    }
+    
+    // Exercício 15: Imprimir os primeiros 10 números da sequência de Fibonacci
+    function sequenciaFibonacci() {
+      const resultado = document.getElementById('resultado15');
+      resultado.innerHTML = "<div class='alert alert-info'>Sequência de Fibonacci:</div>";
+      
+      let num1 = 0;
+      let num2 = 1;
+      let proximoNumero;
+      
+      resultado.innerHTML += `<span class="badge bg-primary me-1">${num1}</span>`;
+      resultado.innerHTML += `<span class="badge bg-primary me-1">${num2}</span>`;
+      
+      for (let i = 3; i <= 10; i++) {
+        proximoNumero = num1 + num2;
+        resultado.innerHTML += `<span class="badge bg-primary me-1">${proximoNumero}</span>`;
+        num1 = num2;
+        num2 = proximoNumero;
+      }
+    }
+    
+  </script>
+  
+</body>
+</html>
