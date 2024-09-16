@@ -3,52 +3,176 @@
 <head>
   <meta charset="UTF-8">
   <title>Projeto de Exercícios em JavaScript</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
+    /* Estilos Globais */
     body {
-      background-color: #f8f9fa;
+      background-color: #2b2b2b;
+      color: #a9b7c6;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
     }
     .container {
-      margin-top: 50px;
+      width: 90%;
+      margin: 0 auto;
+      padding-top: 50px;
     }
+    h1, h3 {
+      text-align: center;
+      color: #a9b7c6;
+    }
+    /* Menu Principal */
+    #menu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .menu-button {
+      background-color: #3c3f41;
+      border: none;
+      color: #a9b7c6;
+      padding: 15px 30px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      min-width: 150px;
+    }
+    .menu-button::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: all 0.5s ease;
+    }
+    .menu-button:hover {
+      color: #fff;
+      box-shadow: 0 0 10px #b425d8, 0 0 20px #b425d8, 0 0 30px #b425d8;
+    }
+    .menu-button:hover::after {
+      left: 100%;
+    }
+    /* Seções de Exercícios */
     .exercise-section {
       display: none;
+      margin-top: 30px;
+    }
+    .form-control {
+      background-color: #3c3f41;
+      border: 1px solid #555555;
+      color: #a9b7c6;
+      padding: 10px;
+      margin-bottom: 15px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .form-control::placeholder {
+      color: #808080;
+    }
+    .btn {
+      background-color: #3c3f41;
+      border: none;
+      color: #a9b7c6;
+      padding: 10px 20px;
+      cursor: pointer;
+      margin-right: 10px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: all 0.5s ease;
+    }
+    .btn:hover {
+      color: #fff;
+      box-shadow: 0 0 10px #ffa500, 0 0 20px #ffa500, 0 0 30px #ffa500;
+    }
+    .btn:hover::after {
+      left: 100%;
     }
     .result {
       margin-top: 20px;
+      color: #a9b7c6;
+    }
+    .alert {
+      padding: 15px;
+      background-color: #3c3f41;
+      border-left: 5px solid #ffa500;
+      margin-bottom: 15px;
+    }
+    .alert-success {
+      border-left-color: #6a8759;
+    }
+    .alert-info {
+      border-left-color: #467CDA;
+    }
+    .alert-warning {
+      border-left-color: #FFC66D;
+    }
+    .alert-danger {
+      border-left-color: #CC7832;
+    }
+    /* Tabela */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    th, td {
+      border: 1px solid #555555;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #3c3f41;
+    }
+    /* Badges */
+    .badge {
+      display: inline-block;
+      padding: 5px 10px;
+      margin: 2px;
+      background-color: #3c3f41;
+      color: #a9b7c6;
+      border-radius: 3px;
     }
   </style>
 </head>
 <body>
   
   <div class="container">
-    <h1 class="text-center mb-4">Projeto de Exercícios em JavaScript</h1>
+    <h1>Projeto de Exercícios em JavaScript</h1>
     
     <!-- Menu Principal -->
     <div id="menu">
-      <div class="mb-3">
-        <label for="exerciseSelect" class="form-label">Selecione um Exercício:</label>
-        <select class="form-select" id="exerciseSelect">
-          <option value="" selected>-- Escolha uma opção --</option>
-          <option value="1">1. Verificar se um número é par ou ímpar</option>
-          <option value="2">2. Classificar idade em categorias</option>
-          <option value="3">3. Classificar nota</option>
-          <option value="4">4. Menu interativo com switch-case</option>
-          <option value="5">5. Calcular IMC e determinar categoria de peso</option>
-          <option value="6">6. Verificar tipo de triângulo</option>
-          <option value="7">7. Calcular o valor total da compra de maçãs</option>
-          <option value="8">8. Escrever dois valores em ordem crescente</option>
-          <option value="9">9. Contagem regressiva de 10 até 1</option>
-          <option value="10">10. Escrever um número inteiro na tela 10 vezes</option>
-          <option value="11">11. Somar 5 números fornecidos pelo usuário</option>
-          <option value="12">12. Exibir a tabuada de um número</option>
-          <option value="13">13. Calcular a média de números decimais até 0</option>
-          <option value="14">14. Calcular o fatorial de um número</option>
-          <option value="15">15. Imprimir os primeiros 10 números da sequência de Fibonacci</option>
-        </select>
-      </div>
-      <button class="btn btn-primary" id="goButton">Executar</button>
+      <button class="menu-button" data-exercise="1">Verificar Par ou Ímpar</button>
+      <button class="menu-button" data-exercise="2">Classificar Idade</button>
+      <button class="menu-button" data-exercise="3">Classificar Nota</button>
+      <button class="menu-button" data-exercise="4">Menu Interativo</button>
+      <button class="menu-button" data-exercise="5">Calcular IMC</button>
+      <button class="menu-button" data-exercise="6">Verificar Triângulo</button>
+      <button class="menu-button" data-exercise="7">Calcular Compra de Maçãs</button>
+      <button class="menu-button" data-exercise="8">Ordenar Valores</button>
+      <button class="menu-button" data-exercise="9">Contagem Regressiva</button>
+      <button class="menu-button" data-exercise="10">Repetir Número</button>
+      <button class="menu-button" data-exercise="11">Somar Números</button>
+      <button class="menu-button" data-exercise="12">Exibir Tabuada</button>
+      <button class="menu-button" data-exercise="13">Calcular Média</button>
+      <button class="menu-button" data-exercise="14">Calcular Fatorial</button>
+      <button class="menu-button" data-exercise="15">Sequência de Fibonacci</button>
     </div>
     
     <!-- Seções de Exercícios -->
@@ -56,204 +180,155 @@
     <!-- Exercício 1 -->
     <div id="exercise1" class="exercise-section">
       <h3>1. Verificar se um número é par ou ímpar</h3>
-      <div class="mb-3">
-        <label for="numeroParImpar" class="form-label">Digite um número inteiro:</label>
-        <input type="number" class="form-control" id="numeroParImpar">
-      </div>
-      <button class="btn btn-success" onclick="verificarParImpar()">GO</button>
-      <button class="btn btn-secondary" onclick="voltar()">Voltar ao Menu</button>
+      <input type="number" class="form-control" id="numeroParImpar" placeholder="Digite um número inteiro">
+      <button class="btn" onclick="verificarParImpar()">GO</button>
+      <button class="btn" onclick="voltar()">Voltar ao Menu</button>
       <div class="result" id="resultado1"></div>
     </div>
     
     <!-- Exercício 2 -->
     <div id="exercise2" class="exercise-section">
       <h3>2. Classificar idade em categorias</h3>
-      <div class="mb-3">
-        <label for="idadeCategoria" class="form-label">Digite a sua idade:</label>
-        <input type="number" class="form-control" id="idadeCategoria">
-      </div>
-      <button class="btn btn-success" onclick="classificarIdade()">GO</button>
-      <button class="btn btn-secondary" onclick="voltar()">Voltar ao Menu</button>
+      <input type="number" class="form-control" id="idadeCategoria" placeholder="Digite a sua idade">
+      <button class="btn" onclick="classificarIdade()">GO</button>
+      <button class="btn" onclick="voltar()">Voltar ao Menu</button>
       <div class="result" id="resultado2"></div>
     </div>
     
     <!-- Exercício 3 -->
     <div id="exercise3" class="exercise-section">
       <h3>3. Classificar nota</h3>
-      <div class="mb-3">
-        <label for="notaClassificacao" class="form-label">Digite a nota (0 a 10):</label>
-        <input type="number" step="0.1" class="form-control" id="notaClassificacao">
-      </div>
-      <button class="btn btn-success" onclick="classificarNota()">GO</button>
-      <button class="btn btn-secondary" onclick="voltar()">Voltar ao Menu</button>
+      <input type="number" step="0.1" class="form-control" id="notaClassificacao" placeholder="Digite a nota (0 a 10)">
+      <button class="btn" onclick="classificarNota()">GO</button>
+      <button class="btn" onclick="voltar()">Voltar ao Menu</button>
       <div class="result" id="resultado3"></div>
     </div>
     
     <!-- Exercício 4 -->
     <div id="exercise4" class="exercise-section">
       <h3>4. Menu interativo com switch-case</h3>
-      <div class="mb-3">
-        <label for="opcaoMenu" class="form-label">Escolha uma opção:</label>
-        <select class="form-select" id="opcaoMenu">
-          <option value="" selected>-- Escolha uma opção --</option>
-          <option value="1">1 - Olá</option>
-          <option value="2">2 - Como vai?</option>
-          <option value="3">3 - Tchau</option>
-        </select>
-      </div>
-      <button class="btn btn-success" onclick="menuInterativo()">GO</button>
-      <button class="btn btn-secondary" onclick="voltar()">Voltar ao Menu</button>
+      <select class="form-control" id="opcaoMenu">
+        <option value="" selected>-- Escolha uma opção --</option>
+        <option value="1">1 - Olá</option>
+        <option value="2">2 - Como vai?</option>
+        <option value="3">3 - Tchau</option>
+      </select>
+      <button class="btn" onclick="menuInterativo()">GO</button>
+      <button class="btn" onclick="voltar()">Voltar ao Menu</button>
       <div class="result" id="resultado4"></div>
     </div>
     
     <!-- Exercício 5 -->
     <div id="exercise5" class="exercise-section">
       <h3>5. Calcular IMC e determinar categoria de peso</h3>
-      <div class="mb-3">
-        <label for="pesoIMC" class="form-label">Digite o seu peso em kg:</label>
-        <input type="number" step="0.1" class="form-control" id="pesoIMC">
-      </div>
-      <div class="mb-3">
-        <label for="alturaIMC" class="form-label">Digite a sua altura em metros:</label>
-        <input type="number" step="0.01" class="form-control" id="alturaIMC">
-      </div>
-      <button class="btn btn-success" onclick="calcularIMC()">GO</button>
-      <button class="btn btn-secondary" onclick="voltar()">Voltar ao Menu</button>
+      <input type="number" step="0.1" class="form-control" id="pesoIMC" placeholder="Digite o seu peso em kg">
+      <input type="number" step="0.01" class="form-control" id="alturaIMC" placeholder="Digite a sua altura em metros">
+      <button class="btn" onclick="calcularIMC()">GO</button>
+      <button class="btn" onclick="voltar()">Voltar ao Menu</button>
       <div class="result" id="resultado5"></div>
     </div>
     
     <!-- Exercício 6 -->
     <div id="exercise6" class="exercise-section">
       <h3>6. Verificar tipo de triângulo</h3>
-      <div class="mb-3">
-        <label for="ladoA" class="form-label">Digite o lado A:</label>
-        <input type="number" step="0.1" class="form-control" id="ladoA">
-      </div>
-      <div class="mb-3">
-        <label for="ladoB" class="form-label">Digite o lado B:</label>
-        <input type="number" step="0.1" class="form-control" id="ladoB">
-      </div>
-      <div class="mb-3">
-        <label for="ladoC" class="form-label">Digite o lado C:</label>
-        <input type="number" step="0.1" class="form-control" id="ladoC">
-      </div>
-      <button class="btn btn-success" onclick="verificarTriangulo()">GO</button>
-      <button class="btn btn-secondary" onclick="voltar()">Voltar ao Menu</button>
+      <input type="number" step="0.1" class="form-control" id="ladoA" placeholder="Digite o lado A">
+      <input type="number" step="0.1" class="form-control" id="ladoB" placeholder="Digite o lado B">
+      <input type="number" step="0.1" class="form-control" id="ladoC" placeholder="Digite o lado C">
+      <button class="btn" onclick="verificarTriangulo()">GO</button>
+      <button class="btn" onclick="voltar()">Voltar ao Menu</button>
       <div class="result" id="resultado6"></div>
     </div>
     
     <!-- Exercício 7 -->
     <div id="exercise7" class="exercise-section">
       <h3>7. Calcular o valor total da compra de maçãs</h3>
-      <div class="mb-3">
-        <label for="quantidadeMacas" class="form-label">Digite o número de maçãs compradas:</label>
-        <input type="number" class="form-control" id="quantidadeMacas">
-      </div>
-      <button class="btn btn-success" onclick="calcularCompraMacas()">GO</button>
-      <button class="btn btn-secondary" onclick="voltar()">Voltar ao Menu</button>
+      <input type="number" class="form-control" id="quantidadeMacas" placeholder="Digite o número de maçãs compradas">
+      <button class="btn" onclick="calcularCompraMacas()">GO</button>
+      <button class="btn" onclick="voltar()">Voltar ao Menu</button>
       <div class="result" id="resultado7"></div>
     </div>
     
     <!-- Exercício 8 -->
     <div id="exercise8" class="exercise-section">
       <h3>8. Escrever dois valores em ordem crescente</h3>
-      <div class="mb-3">
-        <label for="valor1Crescente" class="form-label">Digite o primeiro valor:</label>
-        <input type="number" class="form-control" id="valor1Crescente">
-      </div>
-      <div class="mb-3">
-        <label for="valor2Crescente" class="form-label">Digite o segundo valor diferente do primeiro:</label>
-        <input type="number" class="form-control" id="valor2Crescente">
-      </div>
-      <button class="btn btn-success" onclick="ordenarValores()">GO</button>
-      <button class="btn btn-secondary" onclick="voltar()">Voltar ao Menu</button>
+      <input type="number" class="form-control" id="valor1Crescente" placeholder="Digite o primeiro valor">
+      <input type="number" class="form-control" id="valor2Crescente" placeholder="Digite o segundo valor diferente do primeiro">
+      <button class="btn" onclick="ordenarValores()">GO</button>
+      <button class="btn" onclick="voltar()">Voltar ao Menu</button>
       <div class="result" id="resultado8"></div>
     </div>
     
     <!-- Exercício 9 -->
     <div id="exercise9" class="exercise-section">
       <h3>9. Contagem regressiva de 10 até 1</h3>
-      <button class="btn btn-success" onclick="contagemRegressiva()">GO</button>
-      <button class="btn btn-secondary" onclick="voltar()">Voltar ao Menu</button>
+      <button class="btn" onclick="contagemRegressiva()">GO</button>
+      <button class="btn" onclick="voltar()">Voltar ao Menu</button>
       <div class="result" id="resultado9"></div>
     </div>
     
     <!-- Exercício 10 -->
     <div id="exercise10" class="exercise-section">
       <h3>10. Escrever um número inteiro na tela 10 vezes</h3>
-      <div class="mb-3">
-        <label for="numeroRepetir" class="form-label">Digite um número inteiro:</label>
-        <input type="number" class="form-control" id="numeroRepetir">
-      </div>
-      <button class="btn btn-success" onclick="repetirNumero()">GO</button>
-      <button class="btn btn-secondary" onclick="voltar()">Voltar ao Menu</button>
+      <input type="number" class="form-control" id="numeroRepetir" placeholder="Digite um número inteiro">
+      <button class="btn" onclick="repetirNumero()">GO</button>
+      <button class="btn" onclick="voltar()">Voltar ao Menu</button>
       <div class="result" id="resultado10"></div>
     </div>
     
     <!-- Exercício 11 -->
     <div id="exercise11" class="exercise-section">
       <h3>11. Somar 5 números fornecidos pelo usuário</h3>
-      <button class="btn btn-success" onclick="somarNumeros()">GO</button>
-      <button class="btn btn-secondary" onclick="voltar()">Voltar ao Menu</button>
+      <button class="btn" onclick="somarNumeros()">GO</button>
+      <button class="btn" onclick="voltar()">Voltar ao Menu</button>
       <div class="result" id="resultado11"></div>
     </div>
     
     <!-- Exercício 12 -->
     <div id="exercise12" class="exercise-section">
       <h3>12. Exibir a tabuada de um número</h3>
-      <div class="mb-3">
-        <label for="numeroTabuada" class="form-label">Digite um número para ver sua tabuada:</label>
-        <input type="number" class="form-control" id="numeroTabuada">
-      </div>
-      <button class="btn btn-success" onclick="exibirTabuada()">GO</button>
-      <button class="btn btn-secondary" onclick="voltar()">Voltar ao Menu</button>
+      <input type="number" class="form-control" id="numeroTabuada" placeholder="Digite um número para ver sua tabuada">
+      <button class="btn" onclick="exibirTabuada()">GO</button>
+      <button class="btn" onclick="voltar()">Voltar ao Menu</button>
       <div class="result" id="resultado12"></div>
     </div>
     
     <!-- Exercício 13 -->
     <div id="exercise13" class="exercise-section">
       <h3>13. Calcular a média de números decimais até 0</h3>
-      <button class="btn btn-success" onclick="calcularMedia()">GO</button>
-      <button class="btn btn-secondary" onclick="voltar()">Voltar ao Menu</button>
+      <button class="btn" onclick="calcularMedia()">GO</button>
+      <button class="btn" onclick="voltar()">Voltar ao Menu</button>
       <div class="result" id="resultado13"></div>
     </div>
     
     <!-- Exercício 14 -->
     <div id="exercise14" class="exercise-section">
       <h3>14. Calcular o fatorial de um número</h3>
-      <div class="mb-3">
-        <label for="numeroFatorial" class="form-label">Digite um número inteiro não negativo:</label>
-        <input type="number" class="form-control" id="numeroFatorial">
-      </div>
-      <button class="btn btn-success" onclick="calcularFatorial()">GO</button>
-      <button class="btn btn-secondary" onclick="voltar()">Voltar ao Menu</button>
+      <input type="number" class="form-control" id="numeroFatorial" placeholder="Digite um número inteiro não negativo">
+      <button class="btn" onclick="calcularFatorial()">GO</button>
+      <button class="btn" onclick="voltar()">Voltar ao Menu</button>
       <div class="result" id="resultado14"></div>
     </div>
     
     <!-- Exercício 15 -->
     <div id="exercise15" class="exercise-section">
       <h3>15. Imprimir os primeiros 10 números da sequência de Fibonacci</h3>
-      <button class="btn btn-success" onclick="sequenciaFibonacci()">GO</button>
-      <button class="btn btn-secondary" onclick="voltar()">Voltar ao Menu</button>
+      <button class="btn" onclick="sequenciaFibonacci()">GO</button>
+      <button class="btn" onclick="voltar()">Voltar ao Menu</button>
       <div class="result" id="resultado15"></div>
     </div>
     
   </div>
   
-  <!-- Bootstrap JS e Dependências -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  
   <!-- JavaScript para Funcionalidades -->
   <script>
     // Função para mostrar a seção selecionada
-    document.getElementById('goButton').addEventListener('click', function() {
-      const selected = document.getElementById('exerciseSelect').value;
-      if (selected === "") {
-        alert("Por favor, selecione um exercício.");
-        return;
-      }
-      document.getElementById('menu').style.display = 'none';
-      document.getElementById('exercise' + selected).style.display = 'block';
+    const menuButtons = document.querySelectorAll('.menu-button');
+    menuButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const exercise = this.getAttribute('data-exercise');
+        document.getElementById('menu').style.display = 'none';
+        document.getElementById('exercise' + exercise).style.display = 'block';
+      });
     });
     
     // Função para voltar ao menu principal
@@ -263,13 +338,18 @@
       resultados.forEach(function(result) {
         result.innerHTML = "";
       });
+      // Limpar inputs
+      const inputs = document.querySelectorAll('.form-control');
+      inputs.forEach(function(input) {
+        input.value = "";
+      });
       // Ocultar todas as seções de exercícios
       const sections = document.querySelectorAll('.exercise-section');
       sections.forEach(function(section) {
         section.style.display = 'none';
       });
       // Mostrar o menu principal
-      document.getElementById('menu').style.display = 'block';
+      document.getElementById('menu').style.display = 'flex';
     }
     
     // Exercício 1: Verificar se um número é par ou ímpar
@@ -455,7 +535,7 @@
       resultado.innerHTML = "";
       
       for (let i = 10; i >= 1; i--) {
-        resultado.innerHTML += `<span class="badge bg-primary me-1">${i}</span>`;
+        resultado.innerHTML += `<span class="badge">${i}</span>`;
       }
     }
     
@@ -471,7 +551,7 @@
       
       let output = "";
       for (let i = 1; i <= 10; i++) {
-        output += `<span class="badge bg-success me-1">${numero}</span>`;
+        output += `<span class="badge">${numero}</span>`;
       }
       resultado.innerHTML = `<div>${output}</div>`;
     }
@@ -506,7 +586,7 @@
         return;
       }
       
-      let tabuada = `<table class="table table-bordered"><thead><tr><th>Multiplicação</th><th>Resultado</th></tr></thead><tbody>`;
+      let tabuada = `<table><thead><tr><th>Multiplicação</th><th>Resultado</th></tr></thead><tbody>`;
       for (let i = 1; i <= 10; i++) {
         tabuada += `<tr><td>${numero} x ${i}</td><td>${numero * i}</td></tr>`;
       }
@@ -571,12 +651,12 @@
       let num2 = 1;
       let proximoNumero;
       
-      resultado.innerHTML += `<span class="badge bg-primary me-1">${num1}</span>`;
-      resultado.innerHTML += `<span class="badge bg-primary me-1">${num2}</span>`;
+      resultado.innerHTML += `<span class="badge">${num1}</span>`;
+      resultado.innerHTML += `<span class="badge">${num2}</span>`;
       
       for (let i = 3; i <= 10; i++) {
         proximoNumero = num1 + num2;
-        resultado.innerHTML += `<span class="badge bg-primary me-1">${proximoNumero}</span>`;
+        resultado.innerHTML += `<span class="badge">${proximoNumero}</span>`;
         num1 = num2;
         num2 = proximoNumero;
       }
